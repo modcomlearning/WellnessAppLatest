@@ -48,16 +48,33 @@ Android apps are built using specific tools, programming languages, and framewor
 
    Fully supported by Google
 
+
+## Android Activities
+What is an Activity?
+An Activity is a single screen in an Android.
+
+It represents what the user sees and interacts with
+
+Think of an Activity as a page in a book
+
+Each page (Activity) has its own content and layout
+
+#### App Demo
+
+This means if you are developing an app, you will have many Pages, Right? this simply means you will have many ACTIVITIES.
+
 ### Follow these steps to create your first Android app:
 
-Step 1: Open Android Studio
+#### Step 1: Open Android Studio
+
 Launch Android Studio
 
-Step 2: Click "File Menu"  then "New Project"
+#### Step 2: Click "File Menu"  then "New Project"
 
 Choose "Empty Views Activity"
 
-Step 3: Configure Your Project
+#### Step 3: Configure Your Project
+
 
 ![img_2.png](img_2.png)
 
@@ -96,6 +113,7 @@ The image shows a part covered in;
 1. Black line(Android Manifest)
 2. Orange - Kotlin
 3. Blue - XML
+
 
 #### More explanations;
 
@@ -782,5 +800,4 @@ When the user clicks a button, they are taken to a specific screen or Activity
 
 #### Example of Explicit Intents
 
-![Gemini_Generated_Image_cf71uzcf71uzcf71.png](../../Downloads/Gemini_Generated_Image_cf71uzcf71uzcf71.png)
-   
+![img_11.png](img_11.png)
