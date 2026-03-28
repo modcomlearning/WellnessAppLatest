@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WellnessApp">
         <activity
+            android:name=".NutritionAdvice"
+            android:exported="false" />
+        <activity
+            android:name=".HealthyRecipes"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

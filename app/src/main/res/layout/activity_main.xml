@@ -38,7 +38,7 @@
          android:layout_height="wrap_content"
          android:text="Healthy Recipes"
          android:layout_margin="10dp"
-         android:id="@+id/healthy_tips"/>
+         android:id="@+id/healthy_recipes"/>
 
     <Button
         android:layout_width="match_parent"

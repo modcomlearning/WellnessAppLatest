@@ -579,7 +579,7 @@ Above ImageView, we specify the width and height, then we load the image we past
            android:layout_height="wrap_content"
            android:text="Healthy Recipes"
            android:layout_margin="10dp"
-           android:id="@+id/healthy_tips"/>
+           android:id="@+id/healthy_recipes"/>
 
    <Button
            android:layout_width="match_parent"
@@ -646,7 +646,7 @@ Enable Developer Options
 Turn on USB Debugging
 
 Connect phone via USB
-uers
+
 ### Output
 
 ![img_9.png](img_9.png)
@@ -706,7 +706,7 @@ Wrap your Views with a ScrollView, First lets look at ScrollView Syntax
          android:layout_height="wrap_content"
          android:text="Healthy Recipes"
          android:layout_margin="10dp"
-         android:id="@+id/healthy_tips"/>
+         android:id="@+id/healthy_recipes"/>
 
     <Button
         android:layout_width="match_parent"
@@ -790,7 +790,8 @@ Intent = Go to another screen
 ## Two Types of Intents
 ### Explicit Intent
 Tells Android exactly which Activity (screen) to open
-Example: Clicking “Start Exercise” button → Opens ExerciseActivity
+Example: Clicking “Start Exercise” button → Opens ExerciseActivity.
+
 ### Implicit Intent
 Android decides which app or activity can handle the action
 Example: Clicking a “Share” button → Opens a list of apps (WhatsApp, Email, etc.)
@@ -798,6 +799,374 @@ Example: Clicking a “Share” button → Opens a list of apps (WhatsApp, Email
 ### Focus in This Chapter: Explicit Intents
 When the user clicks a button, they are taken to a specific screen or Activity
 
-#### Example of Explicit Intents
+### Visual Explanation of Explicit Intents
 
 ![img_11.png](img_11.png)
+
+We start with Explicit intents.
+
+file:///home/user/Pictures/Screenshot_20260327-215540.jpg
+
+Our aim is, if a user clicks any of above Buttons, we navigate to another Activity(Page). To do that we use Explicit Intents
+
+First we need to create activities to navigate to when button are clicked, 
+
+Let's create 2 different buttons to be used by above first 2 buttons.
+
+#### How to create a New Activity
+
+Right Click on app, Click New - Activity - Empty Views Activity.
+
+You will see below Screen, change the Activity Name to 'HealthyRecipes', Please observe that there is a corresponding Layout for that Activity you created.
+
+Then click Finish.
+
+![img_12.png](img_12.png)
+
+Check your app File Structure and Notice that a New Activity hass been Created and an XML.
+
+Let's create another Activity.
+
+Right Click on app, Click New - Activity - Empty Views Activity.
+
+You will see below Screen, change the Activity Name to 'NutritionAdvice', Please observe that there is a corresponding Layout for that Activity you created.
+
+Then click Finish.
+
+![img_13.png](img_13.png)
+
+Now, below screenshot shows the 2 additional activities and their corresponding layouts
+Activities(Kotlin Files) are highlighted in Red and Layouts are highlighted in Blue.
+
+![image(4).png](../../Downloads/image%284%29.png)
+
+You can and open them and notice they are basically empty.
+
+### Performing Explicit Intent
+As mentioned earlier Explitit Intents are ued to Navigate from one Activity to Another, In our application we have 3 Different Activity namely MainActivity, HealthyRecipes and NutritionAdvice.
+
+Then we can proceed to Naviagate among the Activity uing Explicit Intents
+
+Open, res-> layout-> activity_main.xml
+
+
+```xml
+   <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+   <LinearLayout
+           android:id="@+id/main"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="#448AFF"
+           android:orientation="vertical"
+           tools:context=".MainActivity">
+
+
+      <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Health and Wellness"
+              android:textSize="30sp"
+              android:padding="20dp"
+              android:textAlignment="center"
+              android:textStyle="bold"
+              android:layout_marginTop="30dp"
+              android:textColor="#ffffff"
+      />
+
+      <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:src="@drawable/image2"
+              android:layout_margin="10dp"
+              android:scaleType="fitCenter"/>
+
+      <Button
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Healthy Recipes"
+              android:layout_margin="10dp"
+              android:id="@+id/healthy_recipes"/>
+
+      <Button
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Nutrition Advice"
+              android:layout_margin="10dp"
+              android:id="@+id/nutrition_advice"/>
+
+      <Button
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Meditation"
+              android:layout_margin="10dp"
+              android:id="@+id/meditation"/>
+
+      <Button
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Hydration Alert"
+              android:layout_margin="10dp"
+              android:id="@+id/hydration_alert"/>
+
+      <Button
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Start Exercise"
+              android:layout_margin="10dp"
+              android:id="@+id/start_exercise"/>
+
+      <Button
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Daily Motivation"
+              android:layout_margin="10dp"
+              android:id="@+id/daily_motivation"/>
+
+      <Button
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Weekly Goals"
+              android:layout_margin="10dp"
+              android:id="@+id/weekly_goals"/>
+
+      <Button
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Check Progress"
+              android:layout_margin="10dp"
+              android:id="@+id/wcheck_progress"/>
+
+
+   </LinearLayout>
+</ScrollView>
+```
+
+Observe that all Buttons have an id, if NOT please add ID properties.
+Lets work with first 2 Buttons.
+
+They have ids android:id="@+id/healthy_tips"  and android:id="@+id/nutrition_advice"
+PLEASE CONFIRM.
+
+Now, Go to MainActivity under kotlin + java Folder.
+
+You have
+
+  ```kotlin
+package com.example.wellnessapp
+
+class MainActivity : AppCompatActivity() {
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      enableEdgeToEdge()
+      setContentView(R.layout.activity_main)
+      ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+         val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+         v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+         insets
+      }
+   }
+}
+
+ ```
+
+🔹 class MainActivity : AppCompatActivity()
+
+This creates your main screen (Activity) of the app.
+Think of an Activity as a single page/screen in your Android app.
+
+🔹 override fun onCreate(savedInstanceState: Bundle?)
+
+This function runs when the app starts.
+It’s where you set up everything for your screen.
+
+🔹 setContentView(R.layout.activity_main)
+
+This connects your Kotlin code to your XML layout (UI design).
+It displays what you designed in activity_main.xml.
+
+🔹 enableEdgeToEdge()
+
+Allows your app to use the full screen, even behind system bars (like status bar).
+
+🔹 ViewCompat.setOnApplyWindowInsetsListener(...)
+
+This part makes sure your app content doesn’t get hidden behind system bars.
+
+It gets the space used by system bars (top, bottom, sides)
+Then adds padding so your UI stays visible
+
+### Summary:
+MainActivity → your app screen.
+
+onCreate() → runs when app opens.
+
+setContentView() → shows your UI.
+
+Insets code → keeps UI properly spaced on screen
+
+
+After the Insets code, we need to find the Buttons from our XML file. Why? Those buttons dont have any logic they were just displayed to the user, its time to use Kotlin and apply some logic them.
+
+Which Logic are we Adding?
+
+### TODO.
+1. Find the Buttons by ID inside MainActivity.
+2. Add a ClickLitener to the Buttons - Makes button Clickable
+3. Put an Explicit Intent to Respective activities.
+
+
+So, add below code after the insets Code.
+We start finding the two first buttons.
+
+```kotlin
+  val healthy_recipes = findViewById<Button>(R.id.healthy_recipes)
+```
+
+This line is used to connect a button from your screen (XML) to your Kotlin code.
+### Break it down:
+val healthy_recipes
+
+Creates a variable to store the button
+
+--->  You’ll use this name to control the button in code
+
+findViewById<Button>(...)
+
+Finds the button from your layout
+
+---> <Button> tells Android it is a Button
+
+R.id.healthy_recipes
+
+This is the ID of the button you gave in XML
+
+Then add a ClickListener to the Button above
+
+```kotlin
+    healthy_recipes.setOnClickListener{
+        //TODO Intent Navigation Here
+    }
+```
+
+Above code , set a clicklistener to the button
+
+Then inside the Listener, we can put our Explicit Intent to Navigate to HealthyRecipes Activity
+
+```kotlin
+   val intent = Intent(applicationContext, HealthyRecipes::class.java)
+   startActivity(intent)
+```
+
+### What it means:
+🔹 Intent(...)
+
+An Intent is like a message telling Android:
+
+--- > “Open another screen (Activity)”
+
+🔹 Intent(applicationContext, HealthyRecipes::class.java)
+
+applicationContext → where the request is coming from
+
+HealthyRecipes::class.java → the screen you want to open
+
+---> So this says:
+“From this app, open the HealthyRecipes screen.”
+
+### Full MainActivity Code.
+
+```kotlin
+package com.example.wellnessapp
+
+class MainActivity : AppCompatActivity() {
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      enableEdgeToEdge()
+      setContentView(R.layout.activity_main)
+      ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+         val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+         v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+         insets
+      }
+
+      //find Buttons by IDs
+      val healthy_recipes = findViewById<Button>(R.id.healthy_recipes)
+      healthy_recipes.setOnClickListener{
+         val intent = Intent(applicationContext, HealthyRecipes::class.java)
+         startActivity(intent)
+      }//end 
+
+
+      
+
+   }
+}
+```
+
+Let's do for the second button, we repeat the ame procedure.
+
+```kotlin
+package com.example.wellnessapp
+
+class MainActivity : AppCompatActivity() {
+   override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      enableEdgeToEdge()
+      setContentView(R.layout.activity_main)
+      ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+         val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+         v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+         insets
+      }
+
+      //find Buttons by IDs
+      //First button
+      val healthy_recipes = findViewById<Button>(R.id.healthy_recipes)
+      healthy_recipes.setOnClickListener{
+         val intent = Intent(applicationContext, HealthyRecipes::class.java)
+         startActivity(intent)
+      }//end 
+
+      //Second button
+      val nutrition_advice = findViewById<Button>(R.id.nutrition_advice)
+      nutrition_advice.setOnClickListener{
+         val intent = Intent(applicationContext, NutritionAdvice::class.java)
+         startActivity(intent)
+      }//end 
+
+
+   }
+}
+
+```
+
+Above, we find the first 2 buttons, set click listener and Navigate to respective screens/activities uing an Expliocit Intent
+
+### Running Your App
+
+### Option 1: Emulator
+
+Built-in virtual Android device in Android Studio
+
+### Option 2: Physical Device
+
+Enable Developer Options
+
+Turn on USB Debugging
+
+Connect phone via USB
+
+Output.
+Click any of the First 2 Button and Watch the Intent Working as hown below
+
+![img_14.png](img_14.png)
+
+
+
+
