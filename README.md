@@ -1325,6 +1325,9 @@ When user clicks on the First button, below screen displays.
 
 ![img_17.png](img_17.png)
 
-
-
+## NEXT -> 
+1. TODO Other Activities and their Contents.
+2. Add Monetization - Ads
+3. Customize
+4. Publish on Play Store
 
