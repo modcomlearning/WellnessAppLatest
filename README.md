@@ -50,7 +50,7 @@ Android apps are built using specific tools, programming languages, and framewor
 
 
 ## Android Activities
-What is an Activity?
+### What is an Activity?
 An Activity is a single screen in an Android.
 
 It represents what the user sees and interacts with
@@ -170,11 +170,11 @@ Switch from code to UI using icons sourrounded in red in below image
 
 
 ### Running Your App
-Option 1: Emulator
+### Option 1: Emulator
 
 Built-in virtual Android device in Android Studio
 
-Option 2: Physical Device
+### Option 2: Physical Device
 
 Enable Developer Options
 
@@ -195,7 +195,7 @@ Apps are built using Activities, Intents, and XML layouts.
 
 
 ## Chapter 2
-XML vs Kotlin in Android Development
+### XML vs Kotlin in Android Development
 
 When building Android apps in Android Studio, you use two main parts:
 
@@ -241,7 +241,7 @@ Above XML would display the TextView and Button as below
 
 
 ## Views in Android
-What is a View?
+### What is a View?
 
 In Android, a View is any element that you can see on the screen.
 
@@ -283,6 +283,7 @@ Examples: arranging buttons, text, and images.
 
 ### Example:
 Views = furniture (chair, table, TV)
+
 ViewGroup = the room holding the furniture.
 
 ### Common ViewGroups in Android
@@ -434,7 +435,8 @@ modify your code as shown below.
 Above image, we have changed the Layout to Linear, added an Orientation property in the Linear Layout.
 We have also removed the TextView View. So we have an empty Linear Layout(It's a ViewGroup).
 
-Now inside the LinearLayout, we add 
+### Now inside the LinearLayout, we add 
+
 1. TextView  - For App heading
 2. ImageView - For Displaying a from Image
 3. Buttons - To provide users withoption to click on a Button and navigate on another screen
@@ -635,11 +637,11 @@ Above ImageView, we specify the width and height, then we load the image we past
 ```
 
 ### Running Your App
-Option 1: Emulator
+#### Option 1: Emulator
 
 Built-in virtual Android device in Android Studio
 
-Option 2: Physical Device
+#### Option 2: Physical Device
 
 Enable Developer Options
 
@@ -787,7 +789,9 @@ Example: When a user clicks a button, the app can open another screen using an I
 
 Button click
 Intent = Go to another screen
+
 ## Two Types of Intents
+
 ### Explicit Intent
 Tells Android exactly which Activity (screen) to open
 Example: Clicking “Start Exercise” button → Opens ExerciseActivity.
@@ -803,7 +807,7 @@ When the user clicks a button, they are taken to a specific screen or Activity
 
 ![img_11.png](img_11.png)
 
-We start with Explicit intents.
+#### We start with Explicit intents.
 
 file:///home/user/Pictures/Screenshot_20260327-215540.jpg
 
@@ -847,11 +851,11 @@ As mentioned earlier Explitit Intents are ued to Navigate from one Activity to A
 
 Then we can proceed to Naviagate among the Activity uing Explicit Intents
 
-Open, res-> layout-> activity_main.xml
+#### Open, res-> layout-> activity_main.xml
 
 
 ```xml
-   <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -948,14 +952,15 @@ Open, res-> layout-> activity_main.xml
 ```
 
 Observe that all Buttons have an id, if NOT please add ID properties.
-Lets work with first 2 Buttons.
+
+Let's work with first 2 Buttons.
 
 They have ids android:id="@+id/healthy_tips"  and android:id="@+id/nutrition_advice"
 PLEASE CONFIRM.
 
 Now, Go to MainActivity under kotlin + java Folder.
 
-You have
+#### You have;
 
   ```kotlin
 package com.example.wellnessapp
@@ -975,26 +980,26 @@ class MainActivity : AppCompatActivity() {
 
  ```
 
-🔹 class MainActivity : AppCompatActivity()
+### 🔹 class MainActivity : AppCompatActivity()
 
 This creates your main screen (Activity) of the app.
 Think of an Activity as a single page/screen in your Android app.
 
-🔹 override fun onCreate(savedInstanceState: Bundle?)
+### 🔹 override fun onCreate(savedInstanceState: Bundle?)
 
 This function runs when the app starts.
 It’s where you set up everything for your screen.
 
-🔹 setContentView(R.layout.activity_main)
+### 🔹 setContentView(R.layout.activity_main)
 
 This connects your Kotlin code to your XML layout (UI design).
 It displays what you designed in activity_main.xml.
 
-🔹 enableEdgeToEdge()
+### 🔹 enableEdgeToEdge()
 
 Allows your app to use the full screen, even behind system bars (like status bar).
 
-🔹 ViewCompat.setOnApplyWindowInsetsListener(...)
+### 🔹 ViewCompat.setOnApplyWindowInsetsListener(...)
 
 This part makes sure your app content doesn’t get hidden behind system bars.
 
@@ -1013,15 +1018,16 @@ Insets code → keeps UI properly spaced on screen
 
 After the Insets code, we need to find the Buttons from our XML file. Why? Those buttons dont have any logic they were just displayed to the user, its time to use Kotlin and apply some logic them.
 
-Which Logic are we Adding?
+### Which Logic are we Adding?
 
-### TODO.
+#### TODO.
 1. Find the Buttons by ID inside MainActivity.
 2. Add a ClickLitener to the Buttons - Makes button Clickable
 3. Put an Explicit Intent to Respective activities.
 
 
 So, add below code after the insets Code.
+
 We start finding the two first buttons.
 
 ```kotlin
@@ -1030,19 +1036,20 @@ We start finding the two first buttons.
 
 This line is used to connect a button from your screen (XML) to your Kotlin code.
 ### Break it down:
-val healthy_recipes
+
+#### val healthy_recipes
 
 Creates a variable to store the button
 
 --->  You’ll use this name to control the button in code
 
-findViewById<Button>(...)
+#### findViewById<Button>(...)
 
 Finds the button from your layout
 
 ---> <Button> tells Android it is a Button
 
-R.id.healthy_recipes
+#### R.id.healthy_recipes
 
 This is the ID of the button you gave in XML
 
@@ -1054,7 +1061,7 @@ Then add a ClickListener to the Button above
     }
 ```
 
-Above code , set a clicklistener to the button
+Above code , set a Clicklistener to the button
 
 Then inside the Listener, we can put our Explicit Intent to Navigate to HealthyRecipes Activity
 
@@ -1064,17 +1071,17 @@ Then inside the Listener, we can put our Explicit Intent to Navigate to HealthyR
 ```
 
 ### What it means:
-🔹 Intent(...)
+#### 🔹 Intent(...)
 
 An Intent is like a message telling Android:
 
 --- > “Open another screen (Activity)”
 
-🔹 Intent(applicationContext, HealthyRecipes::class.java)
+#### 🔹 Intent(applicationContext, HealthyRecipes::class.java)
 
-applicationContext → where the request is coming from
+1. applicationContext → where the request is coming from
 
-HealthyRecipes::class.java → the screen you want to open
+2. HealthyRecipes::class.java → the screen you want to open
 
 ---> So this says:
 “From this app, open the HealthyRecipes screen.”
@@ -1162,7 +1169,7 @@ Turn on USB Debugging
 
 Connect phone via USB
 
-Output.
+### Output.
 Click any of the First 2 Button and Watch the Intent Working as hown below
 
 ![img_14.png](img_14.png)
@@ -1174,7 +1181,7 @@ In this chapter, we will add content to the empty Activities that we already cre
 
 Before this, our Activities (screens) were empty — they existed, but had no text, images, or useful information.
 
-Now, we will:
+#### Now, we will:
 
 Design the screens using XML layouts
 
@@ -1183,7 +1190,8 @@ Add text, images, and buttons
 Make each screen meaningful and useful to the user.
 
 Open activity_healthy_recipes.xml, this is where we create content ot information that the users will see.
-Currently, you have
+Currently, you have;
+
 activity_healthy_recipes.xml
 
 ```xml
@@ -1218,10 +1226,10 @@ Change to LinearLayout, add orientation to vertical, so our views will be vertic
 
 Now we add and imageView and Textviews to show Texts description
 
-Below is Updated XML for recipes.
+### Below is Updated XML for recipes.
 
 ```xml
-  <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -1264,11 +1272,11 @@ Below is Updated XML for recipes.
 
 ### This XML designs a Healthy Recipes screen in your app.
 
-🔹 LinearLayout
+#### 🔹 LinearLayout
 This is the main container
 orientation="vertical" → items are arranged top to bottom.
 
-🔹 First TextView (Title)
+#### 🔹 First TextView (Title)
 android:text="Healthy Recipes"
 
 Displays the title of the screen
@@ -1281,7 +1289,7 @@ textColor → gives it a nice color
 
 ---> This is the heading
 
-🔹 ImageView
+#### 🔹 ImageView
 android:src="@drawable/image6"
 
 Displays an image from your drawable folder
@@ -1290,7 +1298,7 @@ scaleType="centerCrop" → fills the space nicely
 
 --->This adds visual appeal
 
-🔹 Second TextView (Content)
+#### 🔹 Second TextView (Content)
 Shows the list of healthy recipes
 
 Uses \n to create new lines
@@ -1302,6 +1310,7 @@ padding="16dp" → adds space around text
 ---> This is the main content
 
 ### Simple Summary:
+
 LinearLayout → arranges everything vertically
 
 TextView (top) → title
@@ -1310,7 +1319,7 @@ ImageView → shows image
 
 TextView (bottom) → recipe details
 
-Run Your App
+### Run Your App 
 
 When user clicks on the First button, below screen displays.
 
