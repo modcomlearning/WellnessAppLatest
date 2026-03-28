@@ -787,7 +787,7 @@ An Intent is like a messenger in Android that tells the app to do something or g
 
 Example: When a user clicks a button, the app can open another screen using an Intent.
 
-Button click
+Button click.
 Intent = Go to another screen
 
 ## Two Types of Intents
@@ -809,13 +809,13 @@ When the user clicks a button, they are taken to a specific screen or Activity
 
 #### We start with Explicit intents.
 
-file:///home/user/Pictures/Screenshot_20260327-215540.jpg
+![img_18.png](img_18.png)
 
 Our aim is, if a user clicks any of above Buttons, we navigate to another Activity(Page). To do that we use Explicit Intents
 
 First we need to create activities to navigate to when button are clicked, 
 
-Let's create 2 different buttons to be used by above first 2 buttons.
+Let's create 2 different Activities -> to be used by above first 2 buttons.
 
 #### How to create a New Activity
 
@@ -829,7 +829,7 @@ Then click Finish.
 
 Check your app File Structure and Notice that a New Activity hass been Created and an XML.
 
-Let's create another Activity.
+### Let's create another Activity.
 
 Right Click on app, Click New - Activity - Empty Views Activity.
 
@@ -842,7 +842,7 @@ Then click Finish.
 Now, below screenshot shows the 2 additional activities and their corresponding layouts
 Activities(Kotlin Files) are highlighted in Red and Layouts are highlighted in Blue.
 
-![image(4).png](../../Downloads/image%284%29.png)
+![img_19.png](img_19.png)
 
 You can and open them and notice they are basically empty.
 
