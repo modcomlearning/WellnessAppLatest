@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".HealthyRecipes">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Healthy Recipes"
+        android:textSize="30sp"
+        android:padding="20dp"
+        android:textColor="#536DFE"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/image6"
+        android:scaleType="centerCrop"/>
+
+
+    <TextView
+        android:id="@+id/recipesText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Healthy Recipes\n\n1. Fruit Salad\nA mix of fresh fruits like bananas, apples, and oranges.\n\n2. Grilled Chicken\nLow-fat grilled chicken served with vegetables.\n\n3. Vegetable Stir Fry\nCarrots, broccoli, and peppers cooked lightly.\n\n4. Oatmeal Breakfast\nOats with milk and fruits.\n\n5. Avocado Toast\nWhole grain bread topped with avocado.\n\n6. Boiled Eggs\nRich in protein and easy to prepare.\n\n7. Smoothie Bowl\nBlended fruits with yogurt and nuts.\n\n8. Brown Rice and Beans\nHealthy and full of fiber.\n\n9. Baked Fish\nFish baked with lemon and spices.\n\n10. Greek Yogurt with Honey\nGood for digestion and very nutritious."
+        android:textSize="16sp"
+        android:padding="16dp"/>
+
+
+</LinearLayout>

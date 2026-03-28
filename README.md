@@ -1167,6 +1167,156 @@ Click any of the First 2 Button and Watch the Intent Working as hown below
 
 ![img_14.png](img_14.png)
 
+### NB: You can do the ame for other Buttons.
+
+## Chapter 5
+In this chapter, we will add content to the empty Activities that we already created and linked using Intents.
+
+Before this, our Activities (screens) were empty — they existed, but had no text, images, or useful information.
+
+Now, we will:
+
+Design the screens using XML layouts
+
+Add text, images, and buttons
+
+Make each screen meaningful and useful to the user.
+
+Open activity_healthy_recipes.xml, this is where we create content ot information that the users will see.
+Currently, you have
+activity_healthy_recipes.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".HealthyRecipes">
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+Change to LinearLayout, add orientation to vertical, so our views will be vertically aligned
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".HealthyRecipes">
+
+</LinearLayout>
+```
+
+
+Now we add and imageView and Textviews to show Texts description
+
+Below is Updated XML for recipes.
+
+```xml
+  <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".HealthyRecipes">
+
+
+   <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Healthy Recipes"
+           android:textSize="30sp"
+           android:padding="20dp"
+           android:textColor="#536DFE"
+           android:textStyle="bold"
+   />
+
+   <ImageView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:src="@drawable/image6"
+           android:scaleType="centerCrop"/>
+
+
+   <TextView
+           android:id="@+id/recipesText"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Healthy Recipes\n\n1. Fruit Salad\nA mix of fresh fruits like bananas, apples, and oranges.\n\n2. Grilled Chicken\nLow-fat grilled chicken served with vegetables.\n\n3. Vegetable Stir Fry\nCarrots, broccoli, and peppers cooked lightly.\n\n4. Oatmeal Breakfast\nOats with milk and fruits.\n\n5. Avocado Toast\nWhole grain bread topped with avocado.\n\n6. Boiled Eggs\nRich in protein and easy to prepare.\n\n7. Smoothie Bowl\nBlended fruits with yogurt and nuts.\n\n8. Brown Rice and Beans\nHealthy and full of fiber.\n\n9. Baked Fish\nFish baked with lemon and spices.\n\n10. Greek Yogurt with Honey\nGood for digestion and very nutritious."
+           android:textSize="16sp"
+           android:padding="16dp"/>
+
+
+</LinearLayout>
+```
+
+
+### This XML designs a Healthy Recipes screen in your app.
+
+🔹 LinearLayout
+This is the main container
+orientation="vertical" → items are arranged top to bottom.
+
+🔹 First TextView (Title)
+android:text="Healthy Recipes"
+
+Displays the title of the screen
+
+textSize="30sp" → makes it big
+
+textStyle="bold" → makes it bold
+
+textColor → gives it a nice color
+
+---> This is the heading
+
+🔹 ImageView
+android:src="@drawable/image6"
+
+Displays an image from your drawable folder
+
+scaleType="centerCrop" → fills the space nicely
+
+--->This adds visual appeal
+
+🔹 Second TextView (Content)
+Shows the list of healthy recipes
+
+Uses \n to create new lines
+
+textSize="16sp" → normal readable text
+
+padding="16dp" → adds space around text
+
+---> This is the main content
+
+### Simple Summary:
+LinearLayout → arranges everything vertically
+
+TextView (top) → title
+
+ImageView → shows image
+
+TextView (bottom) → recipe details
+
+Run Your App
+
+![img_15.png](img_15.png)
+
+When user clicks on the First button, below screen displays.
+
+![img_16.png](img_16.png)
 
 
 
