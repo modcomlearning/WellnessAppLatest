@@ -1321,7 +1321,7 @@ TextView (bottom) → recipe details
 
 ### Run Your App 
 
-When user clicks on the First button, below screen displays.
+When user clicks on the First button, it moves to Recipe Activity, See below.
 
 ![img_17.png](img_17.png)
 
