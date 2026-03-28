@@ -1170,7 +1170,7 @@ Turn on USB Debugging
 Connect phone via USB
 
 ### Output.
-Click any of the First 2 Button and Watch the Intent Working as hown below
+Click any of the First 2 Buttons and Watch the Intent Working as shown below
 
 ![img_14.png](img_14.png)
 
