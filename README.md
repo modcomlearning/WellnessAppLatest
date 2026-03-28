@@ -1312,11 +1312,10 @@ TextView (bottom) → recipe details
 
 Run Your App
 
-![img_15.png](img_15.png)
-
 When user clicks on the First button, below screen displays.
 
-![img_16.png](img_16.png)
+![img_17.png](img_17.png)
+
 
 
 
