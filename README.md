@@ -1116,7 +1116,7 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-Let's do for the second button, we repeat the ame procedure.
+Let's do for the second button, we repeat the same procedure.
 
 ```kotlin
 package com.example.wellnessapp
@@ -1174,7 +1174,7 @@ Click any of the First 2 Buttons and Watch the Intent Working as shown below
 
 ![img_14.png](img_14.png)
 
-### NB: You can do the ame for other Buttons.
+### NB: You can do the same for other Buttons.
 
 ## Chapter 5
 In this chapter, we will add content to the empty Activities that we already created and linked using Intents.
