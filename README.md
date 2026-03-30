@@ -61,6 +61,8 @@ Each page (Activity) has its own content and layout
 
 #### App Demo
 
+![img_20.png](img_20.png)
+
 This means if you are developing an app, you will have many Pages, Right? this simply means you will have many ACTIVITIES.
 
 ### Follow these steps to create your first Android app:
