@@ -1523,7 +1523,7 @@ Finally Add internet permissions in AndroidManifest.xml, Place this code outside
 
 Observe the test add as shown below.
 
-![img_27.png](img_27.png)
+<img src="img_27.png" alt="rewarded ad" width="400"/>
 
 #### NB: We are using test ads since our app is yet to be published on any app store.
 #### Once app is published, it will serve real ads and you start earning.
@@ -1725,7 +1725,7 @@ The Full Screen add will be shown while you move from MainActivity to HealthReci
 
 Observe the test add as shown below.
 
-![img_28.png](img_28.png)
+<img src="img_28.png" alt="rewarded ad" width="400"/>
 
 ### 2. Rewarded Add Placement  (Optional - Assignment)
 ### What is a Rewarded Ad?
@@ -1896,4 +1896,12 @@ class NutritionAdvice : AppCompatActivity() {
     }
 }
 ```
+
+#### Run your app -> Make sure you are connected to the internet.
+
+Click on NutritionAdvice Button from MainActivity, then press 'Watch and Get Rewarded' Button.
+
+<img src="re1.png" alt="rewarded ad" width="400"/>
+<br>
+<img src="re1.png" alt="rewarded ad" width="400"/>
 

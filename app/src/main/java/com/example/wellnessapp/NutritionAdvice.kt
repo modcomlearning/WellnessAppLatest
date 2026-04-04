@@ -9,7 +9,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
@@ -34,6 +36,22 @@ class NutritionAdvice : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        rewardedAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+
+            override fun onAdDismissedFullScreenContent() {
+                //  Ad is now finished → clear it
+                rewardedAd = null
+
+                // Load next ad
+                loadRewardedAd(this@NutritionAdvice)
+            }
+
+            override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+                rewardedAd = null
+                loadRewardedAd(this@NutritionAdvice)
+            }
         }
     }
 
@@ -73,4 +91,5 @@ class NutritionAdvice : AppCompatActivity() {
             Toast.makeText(applicationContext, "Not Rewarded", Toast.LENGTH_SHORT).show()
         }
     }
+
 }
