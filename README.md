@@ -1901,7 +1901,7 @@ class NutritionAdvice : AppCompatActivity() {
 
 Click on NutritionAdvice Button from MainActivity, then press 'Watch and Get Rewarded' Button.
 
-<img src="re1.png" alt="rewarded ad" width="400"/>
+<img src="re1.jpg" alt="rewarded ad" width="400"/>
 <br>
-<img src="re1.png" alt="rewarded ad" width="400"/>
+<img src="re1.jpg" alt="rewarded ad" width="400"/>
 
