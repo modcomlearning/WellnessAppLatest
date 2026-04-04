@@ -851,7 +851,7 @@ You can and open them and notice they are basically empty.
 ### Performing Explicit Intent
 As mentioned earlier Explitit Intents are ued to Navigate from one Activity to Another, In our application we have 3 Different Activity namely MainActivity, HealthyRecipes and NutritionAdvice.
 
-Then we can proceed to Naviagate among the Activity uing Explicit Intents
+Then we can proceed to Naviagate among the Activity using Explicit Intents
 
 #### Open, res-> layout-> activity_main.xml
 
@@ -1155,7 +1155,7 @@ class MainActivity : AppCompatActivity() {
 
 ```
 
-Above, we find the first 2 buttons, set click listener and Navigate to respective screens/activities uing an Expliocit Intent
+Above, we find the first 2 buttons, set click listener and Navigate to respective screens/activities using an Expliocit Intent
 
 ### Running Your App
 
@@ -1467,7 +1467,7 @@ Place the Ad Unit ID a hown below.
 ```
 
 Then in Kotlin - MainActivity
-Implement the Banner ad uing below code. Add the code Just below(...  setContentView(R.layout.activity_main))
+Implement the Banner ad using below code. Add the code Just below(...  setContentView(R.layout.activity_main))
 
 ```kotlin
         MobileAds.initialize(this)
