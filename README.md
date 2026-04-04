@@ -272,6 +272,8 @@ A View = a building block of the user interface (UI)
 13. WebView – Displays web pages inside the app.
 14. etc.
 
+![img_5.png](ggggg.jpg)
+
 
 ## What is a ViewGroup?
 
@@ -304,8 +306,7 @@ CoordinatorLayout – Special layout for coordinating animations or interactions
 
 RecyclerView – Advanced container for efficiently displaying large scrollable lists.
 
-These ViewGroups are the containers that organize UI elements, and each has a specific way of arranging the Views inside it.
-
+A ViewGroup is responsible for containing and arranging multiple View objects within it. It acts as a container for other Views, allowing you to create user interfaces for android
 
 ### An Example of LinearLayout View Group
 
@@ -780,10 +781,9 @@ Below screenshot shows scrolling has been enabled by addng a ScrollView ViewGrou
 
 ![img_10.png](img_10.png)
 
-
 ## Chapter 4
 
-What is an Intent?
+### What is an Intent?
 
 An Intent is like a messenger in Android that tells the app to do something or go somewhere.
 
@@ -1331,5 +1331,302 @@ When user clicks on the First button, it moves to Recipe Activity, See below.
 1. TODO Other Activities and their Contents.
 2. Add Monetization - Ads
 3. Customize
-4. Publish on Play Store
+4. Publish on App Store
 
+
+## Monetization
+
+### What is Ads Monetization?
+
+Ads monetization is the process of earning money by displaying ads in your mobile app.
+
+### Developers earn when users:
+
+1. View ads (impressions)
+2. Click ads
+3. Watch ads (videos)
+
+### Popular Ad Networks
+
+Google AdMob (Most popular)
+Meta Audience Network
+
+### Google Admob.
+### What is Google AdMob?
+
+Google AdMob is a platform by Google that allows app developers to earn money by displaying ads in mobile apps.
+
+It connects your app to advertisers, and you get paid when users interact with ads.
+
+![img_21.png](img_21.png)
+
+You create an app
+
+You add ads using AdMob
+
+Advertisers pay Google
+
+Ads appear in your app
+
+You earn money
+
+
+## Types of Ads in AdMob
+### 🟩 Banner Ads
+Small ads at top or bottom
+Always visible
+Easy to implement
+Moderate earnings
+
+### 🟦 Interstitial Ads
+Full-screen ads
+Shown between activities
+Higher earnings
+
+### 🟨 Rewarded Ads
+Users watch ads voluntarily
+You give rewards (coins, hints, unlocks)
+Higher earnings
+
+## Example
+### Banner Ad
+
+![img_22.png](img_22.png)
+![img_23.png](img_23.png)
+
+### Interstitial Ads
+
+![img_24.png](img_24.png)
+
+### Rewarded Ads
+
+![img_25.png](img_25.png)
+
+
+### Admob Payment Flow
+
+![flow.png](flow.png)
+
+
+## Admob Implementation in Android
+
+
+## Steps to Add Ads (AdMob)
+### Step 1: Create Account
+
+Go to AdMob website  - admob.google.com/
+Create an app.
+### Get:
+App ID, Ad Unit ID.
+
+### Video link explaining STEPS to be uploaded HERE LATER.
+
+FOR NOW, we will use testing IDs, Since we are testing ads, then later go live.
+USE BELOW FOR TESTING.
+
+App ID: ca-app-pub-3940256099942544~3347511713
+
+Ad Unit ID: Banner Ads - ca-app-pub-3940256099942544/6300978111
+
+Ad Unit ID: Interstitial Ads - ca-app-pub-3940256099942544/1033173712
+
+### Step 2: Add Dependency
+In gradle (app), add below dependency for enabling admob usage in yout app 
+
+```gradle
+   implementation 'com.google.android.gms:play-services-ads:23.0.0'
+```
+ Sync your app for above added dependency to take effect.
+
+### Step 3: Add App ID (AndroidManifest.xml)
+In Android Manifest add below line, Add it inside the <application> tag. In the value attribute add the App_ID we got in Step 1
+```xml
+<meta-data
+    android:name="com.google.android.gms.ads.APPLICATION_ID"
+    android:value="ca-app-pub-xxxxxxxx~xxxxxxxx"/>
+```
+#### See below
+
+![img_26.png](img_26.png)
+
+### 1. Banner Add Placement
+Let's begin by placing a Banner Ad, in any XML Layout(i will use activity_main.xml in this case.).
+Place below adView, Its a View you can placed before the first button, below our image
+Place the Ad Unit ID a hown below.
+
+```xml
+ <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
+
+```
+
+Then in Kotlin - MainActivity
+Implement the Banner ad uing below code. Add the code Just below(...  setContentView(R.layout.activity_main))
+
+```kotlin
+        MobileAds.initialize(this)
+        val adView = findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+```
+
+Explanation
+### a) MobileAds.initialize(this)
+Starts the Google AdMob SDK
+
+Prepares your app to load ads
+
+Must be called before showing ads
+
+### b) val adView = findViewById<AdView>(R.id.adView)
+Get the AdView from Layout
+
+Connects your Kotlin code to the ad view in XML
+
+R.id.adView = the banner ad you placed in your layout
+
+### c) val adRequest = AdRequest.Builder().build()
+Creates a request asking AdMob for an ad
+
+You can customize it (e.g., test devices)
+
+### d) adView.loadAd(adRequest)
+Load the Ad
+
+Sends the request to AdMob
+
+AdMob returns an ad
+
+The ad is displayed in your app
+
+NB: Check that below imports have been imported.
+
+```code
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.*
+```
+Finally Add internet permissions in AndroidManifest.xml, Place this code outside the application tag.
+
+```xml
+   <uses-permission android:name="android.permission.INTERNET"/>
+```
+
+#### Run your app -> Make sure you are connected to the internet.
+
+Observe the test add as shown below.
+
+![img_27.png](img_27.png)
+
+#### NB: We are using test ads since our app is yet to be published on any app store.
+#### Once app is published, it will serve real ads and you start earning.
+
+### 2. Interstitial Add Placement
+In this step, we now learn how to implement interstitial ads, Unlike Banner ads that occupy a small portion in your layout, Interstitial ads blcok the whole screen.
+### Implementation
+
+In MainActivity, declare below variable Globally (Inside our MainActivity Class, but Outside a functions). This variable will hold our add later, for now lets leave initialized to 'null'
+```kotlin
+    private var mInterstitialAd: InterstitialAd? = null
+```
+
+Add below 2 functions in MainActivity, add them after oncreate function.
+Note, that we provide interstitial ad, Test ID, Below code is used to Load an Interstitial add that blocks the whole screen.
+There are 2 functions implement that detects on Failure of ad or successfully loaded
+```kotlin
+   
+    fun loadInterstitialAd() {
+        val adRequest = AdRequest.Builder().build()
+        //Requests interstitial ads
+        InterstitialAd.load(
+            this,
+            "ca-app-pub-3940256099942544/1033173712", // Test ID
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+
+                override fun onAdLoaded(ad: InterstitialAd) {
+                    mInterstitialAd = ad
+                }
+
+                override fun onAdFailedToLoad(error: LoadAdError) {
+                    mInterstitialAd = null
+                }
+            }
+        )
+    }
+    //Function checks if ad already running not to run anothet one and overlap - which is wrong
+    fun showInterstitialAd() {
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(this)
+        }
+    }
+```
+
+Then confirm below imports have been imported.
+
+```code
+   import com.google.android.gms.ads.interstitial.InterstitialAd
+   import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+```
+
+Now that we have the code, how do we call our two functions were created??
+
+First, inside onCreate function where the app loads, Load interstitial ad.
+Note below is inside, OnCreate.
+```kotlin
+    showInterstitialAd()
+```
+
+Now your onCreate should look omething like;
+```kotlin
+   override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
+
+        //Initialize Admob ads
+        MobileAds.initialize(this)
+        
+        //Load Banner ad
+        val adView = findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+
+        //Load Interstitial ad
+        loadInterstitialAd()  //HERE *******************
+
+         //Other codes
+```
+
+
+Now that we have loaded an ready to show interstitial ads, The next quesstion is at what point do we show them??
+
+In this case, i will how an interstitial(Full Screen ad) at navigation , where user is linking form one activity to another,
+
+So, in MainActivity, locate healthyrecipes button after or before intent call  showInterstitialAd() function
+
+```kotlin
+  //find Buttons by IDs
+        val healthy_recipes = findViewById<Button>(R.id.healthy_recipes)
+        healthy_recipes.setOnClickListener{
+             val intent = Intent(applicationContext, HealthyRecipes::class.java)
+             startActivity(intent)
+           
+             //Call Here *********
+             showInterstitialAd()
+
+        }//end
+```
+
+The Full Screen add will be shown while you move from MainActivity to HealthRecipes.
+
+#### Run your app -> Make sure you are connected to the internet.
+
+Observe the test add as shown below.
+
+![img_28.png](img_28.png)
