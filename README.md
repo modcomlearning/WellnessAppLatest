@@ -1430,6 +1430,8 @@ Ad Unit ID: Banner Ads - ca-app-pub-3940256099942544/6300978111
 
 Ad Unit ID: Interstitial Ads - ca-app-pub-3940256099942544/1033173712
 
+Ad Unit ID : Rewarded Ads- ca-app-pub-3940256099942544/5224354917
+
 ### Step 2: Add Dependency
 In gradle (app), add below dependency for enabling admob usage in yout app 
 
@@ -1623,6 +1625,100 @@ So, in MainActivity, locate healthyrecipes button after or before intent call  s
         }//end
 ```
 
+
+
+Full Updated MainActivity.
+
+```kotlin
+package com.example.wellnessapp
+
+import android.content.Intent
+import android.os.Bundle
+import android.widget.Button
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+
+class MainActivity : AppCompatActivity() {
+
+    private var mInterstitialAd: InterstitialAd? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
+
+        //Initialize Admob ads
+        MobileAds.initialize(this)
+
+        //Load Banner ad
+        val adView = findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+
+        //Load Interstitial ad
+        loadInterstitialAd()
+
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        //find Buttons by IDs
+        val healthy_recipes = findViewById<Button>(R.id.healthy_recipes)
+        healthy_recipes.setOnClickListener{
+             val intent = Intent(applicationContext, HealthyRecipes::class.java)
+             startActivity(intent)
+
+             showInterstitialAd()
+
+        }//end
+
+        val nutrition_advice = findViewById<Button>(R.id.nutrition_advice)
+        nutrition_advice.setOnClickListener{
+            val intent = Intent(applicationContext, NutritionAdvice::class.java)
+            startActivity(intent)
+        }//end
+
+    }
+    //Load add fucntion
+    fun loadInterstitialAd() {
+        val adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(
+            this,
+            "ca-app-pub-3940256099942544/1033173712", // Test ID
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+
+                override fun onAdLoaded(ad: InterstitialAd) {
+                    mInterstitialAd = ad
+                }
+
+                override fun onAdFailedToLoad(error: LoadAdError) {
+                    mInterstitialAd = null
+                }
+            }
+        )
+    }
+    //Show Interstitial ad
+    fun showInterstitialAd() {
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(this)
+        }
+    }
+   
+}
+```
 The Full Screen add will be shown while you move from MainActivity to HealthRecipes.
 
 #### Run your app -> Make sure you are connected to the internet.
@@ -1630,3 +1726,174 @@ The Full Screen add will be shown while you move from MainActivity to HealthReci
 Observe the test add as shown below.
 
 ![img_28.png](img_28.png)
+
+### 2. Rewarded Add Placement  (Optional - Assignment)
+### What is a Rewarded Ad?
+
+A rewarded ad (in Google AdMob) is a video ad that the user chooses to watch in exchange for something valuable in your app.
+
+#### Key idea:
+
+1. User taps “Watch Ad”
+2. Watches video
+3. Gets reward (coins, hints, unlocks)
+
+It is user-controlled, so it feels less annoying than other ads.
+
+#### Problem: Ad Conflict with Interstitial Ads
+
+#### If you use:
+
+1. Interstitial ads (automatic full screen)
+2. Rewarded ads (user-triggered)
+
+   They can conflict if:
+
+Both try to show at the same time
+Ads appear too frequently
+User gets annoyed → uninstall App
+
+### Implementation
+Let's add it in NutritionAdvice Activity.
+
+Inside NutritionAdvice Activity declare and initialize below variable Globally.
+
+
+```kotlin
+   var rewardedAd: RewardedAd? = null
+```
+
+Add below function to load a rewarded ad. Also change the AD Unt ID for rewarded ad.
+Add this function after the onCreate() function.
+
+```kotlin
+fun loadRewardedAd(context: Context) {
+    val adRequest = AdRequest.Builder().build()
+
+    RewardedAd.load(context,
+        "ca-app-pub-3940256099942544/5224354917",
+        adRequest,
+        object : RewardedAdLoadCallback() {
+
+            override fun onAdLoaded(ad: RewardedAd) {
+                rewardedAd = ad
+            }
+
+            override fun onAdFailedToLoad(error: LoadAdError) {
+                rewardedAd = null
+            }
+        })
+}
+
+fun showRewardedAd(activity: Activity) {
+   if (rewardedAd != null) {
+      rewardedAd?.show(activity) { rewardItem ->
+         // Give reward to user
+         val rewardAmount = rewardItem.amount
+         val rewardType = rewardItem.type
+
+         println("User earned: $rewardAmount $rewardType")
+      }
+   } else {
+      println("Ad not ready")
+   }
+}
+```
+
+Inside NutritionAdvice Activity, Inside onCreate() function, Call loadRewardedAd() function.
+Then you can introduce a Button in Xml and use it to Trigger the showRewardedAd().
+```kotlin
+ setContentView(R.layout.activity_nutrition_advice)
+
+//Load rewarded ads
+loadRewardedAd(this)
+//Show rewarded ad on Button Click
+val reward = findViewById<Button>(R.id.reward)
+reward.setOnClickListener{
+   showRewardedAd(this)
+}
+
+```
+
+
+Full Code NutritionAdvice.
+
+```kotlin
+package com.example.wellnessapp
+
+import android.app.Activity
+import android.content.Context
+import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
+
+class NutritionAdvice : AppCompatActivity() {
+
+    var rewardedAd: RewardedAd? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_nutrition_advice)
+        //Load rewarded ads
+        loadRewardedAd(this)
+        //Show rewarded ad on Button Click
+        val reward = findViewById<Button>(R.id.reward)
+        reward.setOnClickListener{
+            showRewardedAd(this)
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+    }
+
+
+    fun loadRewardedAd(context: Context) {
+        val adRequest = AdRequest.Builder().build()
+
+        RewardedAd.load(context,
+            "ca-app-pub-3940256099942544/5224354917",
+            adRequest,
+            object : RewardedAdLoadCallback() {
+
+                override fun onAdLoaded(ad: RewardedAd) {
+                    rewardedAd = ad
+                }
+
+                override fun onAdFailedToLoad(error: LoadAdError) {
+                    rewardedAd = null
+                }
+            })
+    }
+
+    fun showRewardedAd(activity: Activity) {
+        if (rewardedAd != null) {
+            rewardedAd?.show(activity) { rewardItem ->
+                // Give reward to user
+                val rewardAmount = rewardItem.amount
+                val rewardType = rewardItem.type
+
+                println("User earned: $rewardAmount $rewardType")
+                Toast.makeText(applicationContext, "Rewarded", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Navigate a New Content Activity", Toast.LENGTH_SHORT).show()
+
+            }
+        } else {
+            println("Ad not ready")
+            Toast.makeText(applicationContext, "Not Rewarded", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+```
+
