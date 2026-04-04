@@ -1903,5 +1903,5 @@ Click on NutritionAdvice Button from MainActivity, then press 'Watch and Get Rew
 
 <img src="re1.jpg" alt="rewarded ad" width="400"/>
 <br>
-<img src="re1.jpg" alt="rewarded ad" width="400"/>
+<img src="re2.jpg" alt="rewarded ad" width="400"/>
 
