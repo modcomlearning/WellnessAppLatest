@@ -1380,12 +1380,16 @@ Moderate earnings
 
 ### 🟦 Interstitial Ads
 Full-screen ads
+
 Shown between activities
+
 Higher earnings
 
 ### 🟨 Rewarded Ads
 Users watch ads voluntarily
+
 You give rewards (coins, hints, unlocks)
+
 Higher earnings
 
 ## Example
@@ -1415,6 +1419,7 @@ Higher earnings
 ### Step 1: Create Account
 
 Go to AdMob website  - admob.google.com/
+
 Create an app.
 ### Get:
 App ID, Ad Unit ID.
