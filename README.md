@@ -1424,7 +1424,7 @@ Create an app.
 ### Get:
 App ID, Ad Unit ID.
 
-### Video link explaining STEPS to be uploaded HERE LATER.
+### Check Video expalining steps at the end of this repo..
 
 FOR NOW, we will use testing IDs, Since we are testing ads, then later go live.
 USE BELOW FOR TESTING.
@@ -1459,7 +1459,7 @@ In Android Manifest add below line, Add it inside the <application> tag. In the 
 ### 1. Banner Add Placement
 Let's begin by placing a Banner Ad, in any XML Layout(i will use activity_main.xml in this case.).
 Place below adView, Its a View you can placed before the first button, below our image
-Place the Ad Unit ID a hown below.
+Place the Ad Unit ID as shown below.
 
 ```xml
  <com.google.android.gms.ads.AdView
@@ -1910,3 +1910,6 @@ Click on NutritionAdvice Button from MainActivity, then press 'Watch and Get Rew
 <br>
 <img src="re2.jpg" alt="rewarded ad" width="400"/>
 
+
+### How to Create Admob Account, Add App etc
+https://www.youtube.com/watch?v=zC075pcM7rc&list=PLcJhXDSkclw16you_lO2SnWlJF2fzUgwL&index=4
