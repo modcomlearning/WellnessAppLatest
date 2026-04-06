@@ -1424,7 +1424,7 @@ Create an app.
 ### Get:
 App ID, Ad Unit ID.
 
-### Check Video expalining steps at the end of this repo..
+#### Check Video explaining steps to create account, add app, create ad units .... at the end of this repo..
 
 FOR NOW, we will use testing IDs, Since we are testing ads, then later go live.
 USE BELOW FOR TESTING.
