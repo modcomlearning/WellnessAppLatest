@@ -1911,5 +1911,6 @@ Click on NutritionAdvice Button from MainActivity, then press 'Watch and Get Rew
 <img src="re2.jpg" alt="rewarded ad" width="400"/>
 
 
-### How to Create Admob Account, Add App etc
+### How to Create Admob Account, Add App, Add App units etc
 https://www.youtube.com/watch?v=zC075pcM7rc&list=PLcJhXDSkclw16you_lO2SnWlJF2fzUgwL&index=4
+
